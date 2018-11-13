@@ -3,10 +3,10 @@
 </template>
 
 <script>
-  export default {
-    name: 'BaseConfig',
+export default {
+  name: 'BaseConfig',
 
-  };
+};
 </script>
 
 <style scoped>

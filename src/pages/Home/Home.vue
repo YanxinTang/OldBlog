@@ -20,9 +20,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'ListPost'
-  };
+export default {
+  name: 'ListPost',
+};
 </script>
 
 <style scoped>

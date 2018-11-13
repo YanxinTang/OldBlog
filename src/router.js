@@ -17,11 +17,12 @@ import AdminCategoires from './pages/Admin/Categories.vue';
 const routes = {
   routes: [
     {
-      path: '/', component: Home,
+      path: '/',
+      component: Home,
       children: [
         { path: '/', component: ListPost },
         { path: '/categories', component: Categories },
-      ]
+      ],
     },
     { path: '/login', component: Login },
     {
