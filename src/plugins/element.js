@@ -1,4 +1,4 @@
-import Vue from 'vue'
-import { Button } from 'element-ui'
+import Vue from 'vue';
+import Element from 'element-ui';
 
-Vue.use(Button)
+Vue.use(Element, { size: 'small', zIndex: 3000 });
