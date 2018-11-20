@@ -3,8 +3,10 @@ import VueRouter from 'vue-router';
 
 
 import Home from './pages/Home/Home.vue';
-import ListPost from './pages/Home/Index.vue';
+import Blog from './pages/Home/Blog.vue';
+import PostList from './pages/Home/PostList.vue';
 import Categories from './pages/Home/Categories.vue';
+import HomePost from './pages/Home/Post.vue';
 
 import Admin from './pages/Admin/Admin.vue';
 import Login from './pages/Login.vue';
@@ -20,8 +22,17 @@ const routes = {
       path: '/',
       component: Home,
       children: [
-        { path: '/', component: ListPost },
+        {
+          path: '',
+          name: 'blog',
+          component: Blog,
+          children: [
+            { path: '', component: PostList },
+            { path: '/post/:id', component: HomePost, props: true },
+          ],
+        },
         { path: '/categories', component: Categories },
+
       ],
     },
     { path: '/login', component: Login },

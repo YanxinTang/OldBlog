@@ -1,22 +1,15 @@
 <template>
-    <el-row>
-        <el-col :span="12" :offset="3">
-            <Post v-for="post in posts" :post="post"></Post>
-        </el-col>
-        <el-col :span="5" :offset="1">
-            <el-card shadow="never">
-
-            </el-card>
-        </el-col>
-    </el-row>
+    <div class="post-list">
+        <PostListItem v-for="post in posts" :key="posts.id" :post="post"></PostListItem>
+    </div>
 </template>
 
 <script>
-import Post from 'components/Post.vue';
+import PostListItem from './PostListItem.vue';
 
 export default {
-  name: 'ListPost',
-  components: { Post },
+  name: 'PostList',
+  components: { PostListItem },
   data() {
     return {
       posts: [],
