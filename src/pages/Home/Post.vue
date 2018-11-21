@@ -33,7 +33,7 @@ export default {
     return {
       post: {
         attributes: {
-          content: ''
+          content: '',
         },
       },
     };

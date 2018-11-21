@@ -39,14 +39,11 @@ export default {
 </script>
 
 <style scoped>
-    a{
-        color: #ff7e79;
-    }
     a:link, a:visited{
-        color: #ff7e79;
+        color: #303133;
     }
     a:hover{
-        border: #ff7e79;
+        color: #ff7e79;
     }
     .post-body{
         padding-top: 20px;
