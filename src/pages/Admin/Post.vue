@@ -1,8 +1,7 @@
 <template>
     <el-form
-            label-width="80px"
-            size="large"
-    >
+        label-width="80px"
+        size="large">
         <el-form-item label="标题">
             <el-input v-model="form.title"></el-input>
         </el-form-item>
@@ -12,6 +11,18 @@
                 :props="{value: 'id', label:'name'}"
                 v-model="form.category">
             </el-cascader>
+        </el-form-item>
+        <el-form-item>
+            <el-upload
+                action=""
+                list-type="picture-card"
+                :on-change="uploadImage"
+                :auto-upload="false">
+                <i class="el-icon-plus"></i>
+            </el-upload>
+            <el-dialog :visible.sync="dialogVisible">
+                <img width="100%" :src="dialogImageUrl" alt="">
+            </el-dialog>
         </el-form-item>
         <el-form-item label="内容">
             <el-input
@@ -32,6 +43,8 @@ export default {
   name: 'Post',
   data() {
     return {
+      dialogImageUrl: '',
+      dialogVisible: false,
       form: {
         title: '',
         category: [],
@@ -93,6 +106,17 @@ export default {
             form[key] = '';
         }
       });
+    },
+    uploadImage(localFile) {
+      const file = new this.$AV.File('test.png', localFile.raw);
+      file.save().then((file) => {
+        // 文件保存成功
+        // console.log(file.url());
+      }, (error) => {
+        // 异常处理
+        console.error(error);
+      });
+      // console.log(file);
     },
   },
 };
