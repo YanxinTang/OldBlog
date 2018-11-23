@@ -15,29 +15,29 @@ a {
 
 a:hover {
   color: #cd0200;
-  text-decoration: underline
+  text-decoration: none;
 }
 
 em {
-  font-style: normal
+  font-style: normal;
 }
 
 li {
-  list-style: none
+  list-style: none;
 }
 
 img {
   border: 0;
-  vertical-align: middle
+  vertical-align: middle;
 }
 
 table {
   border-collapse: collapse;
-  border-spacing: 0
+  border-spacing: 0;
 }
 
 p {
-  word-wrap: break-word
+  word-wrap: break-word;
 }
 .el-form-item>label{
   text-align-last: justify;

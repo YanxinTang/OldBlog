@@ -1,16 +1,18 @@
 <template>
-    <el-card shadow="never">
+    <el-card shadow="never" class="post">
         <header>
             <h1>
-                <router-link :to="{path: `/post/${post.id}`}">{{post.attributes.title}}</router-link>
+                <router-link :to="{path: `/post/${post.id}`}">
+                    {{post.attributes.title}}
+                </router-link>
             </h1>
         </header>
         <div class="post-body">
-            {{post.attributes.content|thumb}}
+            <p>{{post.attributes.content|thumb}}</p>
         </div>
         <footer>
             <el-row>
-                <el-col :span="24" :md="{span:6}">
+                <el-col :span="24" :md="{span:12}">
                     <i class="el-icon-date"></i>
                     {{post.createdAt|formatDate}}
                 </el-col>
@@ -32,7 +34,13 @@ export default {
       return dayjs(value).format('YYYY-MM-DD HH:mm:ss');
     },
     thumb(value) {
-      return value.substring(0, 255);
+      let thumb = '';
+      if (value.length > 255) {
+        thumb = `${value.substring(0, 255).replace(/[*\-=]/g, '')}...`;
+      } else {
+        thumb = value.replace(/[*\-=]/g, '');
+      }
+      return thumb;
     },
   },
 };
