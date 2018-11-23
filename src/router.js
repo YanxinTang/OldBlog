@@ -24,10 +24,9 @@ const routes = {
       children: [
         {
           path: '',
-          name: 'blog',
           component: Blog,
           children: [
-            { path: '', component: PostList },
+            { path: '', component: PostList, name: 'index' },
             { path: '/post/:id', component: HomePost, props: true },
           ],
         },

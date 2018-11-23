@@ -2,7 +2,7 @@
     <el-container>
         <el-header>
             <div id="logo">
-                <router-link :to="{path: '/'}">_._</router-link>
+                <router-link :to="{name: 'index'}">_._</router-link>
             </div>
             <el-menu
                 class="pull-right"
