@@ -1,10 +1,6 @@
 <template>
     <el-card shadow="never" class="post">
-        <header>
-            <h1>
-                {{post.attributes.title}}
-            </h1>
-        </header>
+        <PostHeader :title="post.attributes.title"></PostHeader>
         <div class="post-body" v-html="content">
         </div>
         <footer>
@@ -21,6 +17,7 @@
 <script>
 import dayjs from 'dayjs';
 import Marked from 'marked';
+import PostHeader from './PostHeader.vue';
 
 export default {
   name: 'Post',
@@ -28,6 +25,9 @@ export default {
     id: {
       type: String,
     },
+  },
+  components: {
+    PostHeader,
   },
   data() {
     return {

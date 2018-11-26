@@ -1,12 +1,6 @@
 <template>
     <el-card shadow="never" class="post">
-        <header>
-            <h1>
-                <router-link :to="{path: `/post/${post.id}`}">
-                    {{post.attributes.title}}
-                </router-link>
-            </h1>
-        </header>
+        <PostHeader :title="post.attributes.title" :id="post.id" :link="true"></PostHeader>
         <div class="post-body">
             <p>{{post.attributes.content|thumb}}</p>
         </div>
@@ -23,12 +17,14 @@
 
 <script>
 import dayjs from 'dayjs';
+import PostHeader from './PostHeader.vue';
 
 export default {
   name: 'PostListItem',
   props: {
     post: Object,
   },
+  components: { PostHeader },
   filters: {
     formatDate(value) {
       return dayjs(value).format('YYYY-MM-DD HH:mm:ss');
