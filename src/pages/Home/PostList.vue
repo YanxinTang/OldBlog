@@ -1,6 +1,10 @@
 <template>
     <div class="post-list">
-        <PostListItem v-for="post in posts" :key="posts.id" :post="post"></PostListItem>
+        <PostListItem v-for="post in posts" :key="post.id" :post="post"></PostListItem>
+        <div class="text-center">
+            <i class="el-icon-loading" :style="{visibility: loading ? 'visible' : 'hidden'}"></i>
+            <span v-if="over">—— 完 ——</span>
+        </div>
     </div>
 </template>
 
@@ -12,20 +16,48 @@ export default {
   components: { PostListItem },
   data() {
     return {
-      posts: [],
+      posts: [],            // 博文列表
+      canLoad: false,       // 是否可以加载
+      over: false,          // 是否全部加载完成
     };
   },
-  mounted() {
-    const query = new this.$AV.Query('Posts');
-    query.limit(10);
-    query.addDescending('createdAt');
-    query.find().then((posts) => {
-      this.posts = posts;
-    }, (error) => {
-      console.log(error);
-    });
+  created() {
+    window.addEventListener('scroll', this.loadMore);
   },
-
+  mounted() {
+    this.load();
+  },
+  computed: {
+    loading() {
+      return !this.canLoad && !this.over; // 正在加载时canLoad为false; 所有文章未加载完成，over为false;
+    },
+  },
+  methods: {
+    loadMore() {
+      const el = document.documentElement;
+      if (this.canLoad && el.scrollHeight - el.scrollTop <= el.clientHeight + 50) {
+        this.canLoad = false;
+        this.load();
+      }
+    },
+    load() {
+      const date = this.posts.length ? this.posts[this.posts.length - 1].createdAt : new Date();
+      const query = new this.$AV.Query('Posts');
+      query.limit(5);
+      query.addDescending('createdAt');
+      query.lessThan('createdAt', date);
+      query.find().then((posts) => {
+        if (posts.length) {
+          this.posts.push(...posts);
+          this.canLoad = true;
+        } else {
+          this.over = true;
+        }
+      }, (error) => {
+        console.log(error);
+      });
+    },
+  },
 };
 </script>
 
