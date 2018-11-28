@@ -3,7 +3,7 @@
         <PostListItem v-for="post in posts" :key="post.id" :post="post"></PostListItem>
         <div class="text-center">
             <i class="el-icon-loading" :style="{visibility: loading ? 'visible' : 'hidden'}"></i>
-            <span v-if="over">—— 完 ——</span>
+            <span v-if="over" class="over-tips">—— 完 ——</span>
         </div>
     </div>
 </template>
@@ -62,5 +62,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .over-tips{
+    color: #aaa;
+  }
 </style>
