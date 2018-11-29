@@ -7,17 +7,18 @@
         </el-form-item>
         <el-form-item label="分类">
             <el-cascader
-                :options="categories"
-                :props="{value: 'id', label:'name'}"
-                v-model="form.category">
+              :options="categories"
+              :props="{value: 'id', label:'name'}"
+              v-model="form.category">
             </el-cascader>
         </el-form-item>
         <el-form-item>
             <el-upload
-                action=""
+                action="https://sm.ms/api/upload"
                 list-type="picture-card"
-                :on-change="uploadImage"
-                :auto-upload="false">
+                :http-request="upload"
+                :on-progress="uploadProgress"
+                :on-success="uploadSuccess">
                 <i class="el-icon-plus"></i>
             </el-upload>
             <el-dialog :visible.sync="dialogVisible">
@@ -26,10 +27,10 @@
         </el-form-item>
         <el-form-item label="内容">
             <el-input
-                    v-model="form.content"
-                    type="textarea"
-                    :rows="20"
-                    placeholder="又是元气满满的一天:)"
+              v-model="form.content"
+              type="textarea"
+              :rows="20"
+              placeholder="又是元气满满的一天:)"
             ></el-input>
         </el-form-item>
         <el-form-item>
@@ -107,17 +108,23 @@ export default {
         }
       });
     },
-    uploadImage(localFile) {
-      const file = new this.$AV.File('test.png', localFile.raw);
-      file.save().then((file) => {
-        // 文件保存成功
-        // console.log(file.url());
-      }, (error) => {
-        // 异常处理
-        console.error(error);
-      });
-      // console.log(file);
+    upload(params) {
+      console.log(params.onProgress)
+      const action = 'https://sm.ms/api/upload';
+      const form = new FormData();
+      form.append('smfile', params.file);
+      const xhr = new XMLHttpRequest();
+      xhr.addEventListener("progress", params.onProgress, false);
+      xhr.addEventListener("load", params.onSuccess, false);
+      xhr.open('POST', action, true);
+      xhr.send(form);
     },
+    uploadProgress() {
+      console.log('test')
+    },
+    uploadSuccess() {
+      console.log('success')
+    }
   },
 };
 </script>
