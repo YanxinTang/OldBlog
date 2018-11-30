@@ -1,6 +1,6 @@
 <template>
     <el-card shadow="never" class="post">
-        <PostHeader 
+        <PostHeader
           :title="post.attributes.title"
           :category="post.attributes.category.attributes.name"
         ></PostHeader>

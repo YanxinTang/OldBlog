@@ -1,8 +1,8 @@
 <template>
     <el-card shadow="never" class="post">
-        <PostHeader 
-            :title="post.attributes.title" 
-            :id="post.id" 
+        <PostHeader
+            :title="post.attributes.title"
+            :id="post.id"
             :link="true"
             :category="post.attributes.category.attributes.name">
         </PostHeader>
@@ -27,7 +27,18 @@ import PostHeader from './PostHeader.vue';
 export default {
   name: 'PostListItem',
   props: {
-    post: Object,
+    post: {
+      type: Object,
+      default: {
+        attributes: {
+          category: {
+            attributes: {
+              name: '',
+            },
+          },
+        },
+      },
+    },
   },
   components: { PostHeader },
   filters: {

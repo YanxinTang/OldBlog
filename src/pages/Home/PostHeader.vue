@@ -21,7 +21,7 @@ export default {
   name: 'PostHeader',
   props: {
     title: String,
-    category: String,
+    category: Array,
     link: {
       type: Boolean,
       default: false,

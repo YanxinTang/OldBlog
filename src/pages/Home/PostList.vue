@@ -16,9 +16,9 @@ export default {
   components: { PostListItem },
   data() {
     return {
-      posts: [],            // 博文列表
-      canLoad: false,       // 是否可以加载
-      over: false,          // 是否全部加载完成
+      posts: [], // 博文列表
+      canLoad: false, // 是否可以加载
+      over: false, // 是否全部加载完成
     };
   },
   created() {
