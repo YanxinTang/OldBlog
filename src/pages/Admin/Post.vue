@@ -14,10 +14,10 @@
         </el-form-item>
         <el-form-item label="内容">
             <el-input
-                    v-model="form.content"
-                    type="textarea"
-                    :rows="20"
-                    placeholder="又是元气满满的一天:)"
+              v-model="form.content"
+              type="textarea"
+              :rows="20"
+              placeholder="又是元气满满的一天:)"
             ></el-input>
         </el-form-item>
         <el-form-item>

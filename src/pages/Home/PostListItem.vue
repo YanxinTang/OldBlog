@@ -1,6 +1,11 @@
 <template>
     <el-card shadow="never" class="post">
-        <PostHeader :title="post.attributes.title" :id="post.id" :link="true"></PostHeader>
+        <PostHeader 
+            :title="post.attributes.title" 
+            :id="post.id" 
+            :link="true"
+            :category="post.attributes.category.attributes.name">
+        </PostHeader>
         <div class="post-body">
             <p>{{post.attributes.content|thumb}}</p>
         </div>

@@ -43,6 +43,7 @@ export default {
     load() {
       const date = this.posts.length ? this.posts[this.posts.length - 1].createdAt : new Date();
       const query = new this.$AV.Query('Posts');
+      query.include('category');
       query.limit(5);
       query.addDescending('createdAt');
       query.lessThan('createdAt', date);

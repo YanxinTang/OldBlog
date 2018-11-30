@@ -9,6 +9,9 @@
             <template v-else>
                 {{title}}
             </template>
+            <span class="category pull-right">
+                #{{category}}
+            </span>
         </h1>
     </header>
 </template>
@@ -18,6 +21,7 @@ export default {
   name: 'PostHeader',
   props: {
     title: String,
+    category: String,
     link: {
       type: Boolean,
       default: false,
@@ -29,8 +33,12 @@ export default {
 
 <style scoped>
     .post-header{
-        padding-bottom: 2rem;
+        padding-bottom: .5rem;
         border-bottom: 1px solid #eee;
         margin-bottom: .5rem;
+    }
+    .category{
+        color: #ccc;
+        font-size: 1rem;
     }
 </style>

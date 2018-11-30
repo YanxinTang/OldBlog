@@ -1,6 +1,9 @@
 <template>
     <el-card shadow="never" class="post">
-        <PostHeader :title="post.attributes.title"></PostHeader>
+        <PostHeader 
+          :title="post.attributes.title"
+          :category="post.attributes.category.attributes.name"
+        ></PostHeader>
         <div class="post-body" v-html="content">
         </div>
         <footer>
@@ -54,6 +57,7 @@ export default {
   methods: {
     getPost(id) {
       const query = new this.$AV.Query('Posts');
+      query.include('category');
       query.get(id).then((post) => {
         console.log(post);
         this.post = post;
