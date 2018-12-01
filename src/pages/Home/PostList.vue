@@ -1,6 +1,6 @@
 <template>
     <div class="post-list">
-        <PostListItem v-for="post in posts" :key="post.id" :post="post"></PostListItem>
+        <PostListItem v-for="post in posts" :key="post.id" :post="post" v-if="post.attributes.category"></PostListItem>
         <div class="text-center">
             <i class="el-icon-loading" :style="{visibility: loading ? 'visible' : 'hidden'}"></i>
             <span v-if="over" class="over-tips">—— 完 ——</span>
@@ -47,14 +47,14 @@ export default {
       query.limit(5);
       query.addDescending('createdAt');
       query.lessThan('createdAt', date);
-      query.find().then((posts) => {
+      query.find().then(posts => {
         if (posts.length) {
           this.posts.push(...posts);
           this.canLoad = true;
         } else {
           this.over = true;
         }
-      }, (error) => {
+      }, error => {
         console.log(error);
       });
     },

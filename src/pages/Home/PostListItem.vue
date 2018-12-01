@@ -27,18 +27,7 @@ import PostHeader from './PostHeader.vue';
 export default {
   name: 'PostListItem',
   props: {
-    post: {
-      type: Object,
-      default: {
-        attributes: {
-          category: {
-            attributes: {
-              name: '',
-            },
-          },
-        },
-      },
-    },
+    post: Object,
   },
   components: { PostHeader },
   filters: {
