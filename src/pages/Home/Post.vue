@@ -37,6 +37,11 @@ export default {
       post: {
         attributes: {
           content: '',
+          category: {
+            attributes: {
+              name: ''
+            }
+          }
         },
       },
     };

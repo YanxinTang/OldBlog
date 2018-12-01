@@ -1,9 +1,7 @@
 <template>
     <el-container>
         <el-header>
-            <div id="logo">
-                <router-link :to="{name: 'index'}">_._</router-link>
-            </div>
+            <Logo></Logo>
             <el-menu
                 class="pull-right"
                 mode="horizontal"
@@ -20,19 +18,15 @@
 </template>
 
 <script>
+import Logo from './Logo.vue';
+
 export default {
   name: 'ListPost',
+  components: { Logo }
 };
 </script>
 
 <style scoped>
-    #logo{
-        display: inline-block;
-        font-size: 42px;
-        width: 60px;
-        height: 60px;
-        text-align: center;
-    }
     .el-header{
         background: #FFF;
     }

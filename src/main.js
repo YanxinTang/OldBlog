@@ -3,6 +3,7 @@ import './plugins/element';
 import router from './router';
 import AV from './AV';
 
+// eslint-disable-next-line
 import 'element-ui/lib/theme-chalk/display.css';
 import './assets/scss/style.scss';
 import './assets/scss/markdown.scss';
