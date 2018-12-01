@@ -34,7 +34,6 @@ export default {
 <style scoped>
     .post-header{
         padding-bottom: .5rem;
-        border-bottom: 1px solid #eee;
         margin-bottom: .5rem;
     }
     .category{
