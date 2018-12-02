@@ -1,48 +1,33 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-
-import Home from './pages/Home/Home.vue';
-import Blog from './pages/Home/Blog.vue';
-import PostList from './pages/Home/PostList.vue';
-import Categories from './pages/Home/Categories.vue';
-import HomePost from './pages/Home/Post.vue';
-
-import Admin from './pages/Admin/Admin.vue';
-import Login from './pages/Login.vue';
-
-import UserInfo from './pages/Admin/UserInfo.vue';
-import BaseConfig from './pages/Admin/BaseConfig.vue';
-import Post from './pages/Admin/Post.vue';
-import AdminCategoires from './pages/Admin/Categories.vue';
-
 const routes = {
   routes: [
     {
       path: '/',
-      component: Home,
+      component: () => import('./pages/Home/Home.vue'),
       children: [
         {
           path: '',
-          component: Blog,
+          component: () => import('./pages/Home/Blog.vue'),
           children: [
-            { path: '', component: PostList, name: 'index' },
-            { path: '/post/:id', component: HomePost, props: true },
+            { path: '', component: () => import('./pages/Home/PostList.vue'), name: 'index' },
+            { path: '/post/:id', component: () => import('./pages/Home/Post.vue'), props: true },
           ],
         },
-        { path: '/categories', component: Categories },
+        { path: '/categories', component: () => import('./pages/Home/Categories.vue') },
 
       ],
     },
-    { path: '/login', component: Login },
+    { path: '/login', component: () => import('./pages/Login.vue') },
     {
       path: '/admin',
-      component: Admin,
+      component: () => import('./pages/Admin/Admin.vue'),
       children: [
-        { path: '/', component: BaseConfig },
-        { path: 'userinfo', component: UserInfo },
-        { path: 'post', component: Post },
-        { path: 'categories', component: AdminCategoires },
+        { path: '/', component: () => import('./pages/Admin/BaseConfig.vue') },
+        { path: 'userinfo', component: () => import('./pages/Admin/UserInfo.vue') },
+        { path: 'post', component: () => import('./pages/Admin/Post.vue') },
+        { path: 'categories', component: () => import('./pages/Admin/Categories.vue') },
       ],
     },
   ],
