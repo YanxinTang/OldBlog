@@ -2,7 +2,9 @@
     <el-row>
         <el-col :md="{span: 12, offset:3 }" :span="24" class="left-panel">
             <!--<PostListItem v-for="post in posts" :post="post"></PostListItem>-->
-            <router-view></router-view>
+            <keep-alive exclude="Post">
+                <router-view></router-view>
+            </keep-alive>
         </el-col>
         <el-col :span="5" :offset="1" class="hidden-sm-and-down">
             <el-card shadow="never">

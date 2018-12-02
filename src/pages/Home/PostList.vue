@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import PostListItem from './PostListItem.vue';
-
 export default {
   name: 'PostList',
-  components: { PostListItem },
+  components: { 
+    PostListItem: () => import('./PostListItem.vue'),
+  },
   data() {
     return {
       posts: [], // 博文列表
