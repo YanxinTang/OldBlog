@@ -51,21 +51,11 @@ export default {
   methods: {
     submit() {
       AV.User.logIn(this.form.username, this.form.password)
-        .then((user) => {
+        .then(() => {
           this.$router.push('admin');
         }, (error) => {
           console.log(error);
         });
-    },
-    loginAnonymously() {
-      AV.User.loginAnonymously().then((user) => {
-        // 匿名登录成功，user 即为当前登录的匿名用户
-        console.log('success');
-        this.$router.push('admin');
-      }).catch((error) => {
-        // 异常处理
-        console.error(error);
-      });
     },
   },
 };

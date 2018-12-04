@@ -4,7 +4,7 @@ const APP_ID = process.env.VUE_APP_APP_ID;
 const APP_KEY = process.env.VUE_APP_APP_KEY;
 
 export default {
-  install(Vue, options) {
+  install(Vue) {
     AV.init({
       appId: APP_ID,
       appKey: APP_KEY,
