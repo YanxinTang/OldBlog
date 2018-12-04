@@ -39,9 +39,9 @@ export default {
           content: '',
           category: {
             attributes: {
-              name: ''
-            }
-          }
+              name: '',
+            },
+          },
         },
       },
     };

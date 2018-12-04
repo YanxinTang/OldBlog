@@ -24,7 +24,7 @@ import Logo from './Logo.vue';
 
 export default {
   name: 'ListPost',
-  components: { Logo }
+  components: { Logo },
 };
 </script>
 

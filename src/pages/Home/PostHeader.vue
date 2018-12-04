@@ -23,7 +23,7 @@ export default {
     title: String,
     category: {
       type: String,
-      default: ''
+      default: '',
     },
     link: {
       type: Boolean,

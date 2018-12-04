@@ -11,7 +11,7 @@
 <script>
 export default {
   name: 'PostList',
-  components: { 
+  components: {
     PostListItem: () => import('./PostListItem.vue'),
   },
   data() {
@@ -47,14 +47,14 @@ export default {
       query.limit(5);
       query.addDescending('createdAt');
       query.lessThan('createdAt', date);
-      query.find().then(posts => {
+      query.find().then((posts) => {
         if (posts.length) {
           this.posts.push(...posts);
           this.canLoad = true;
         } else {
           this.over = true;
         }
-      }, error => {
+      }, (error) => {
         console.log(error);
       });
     },

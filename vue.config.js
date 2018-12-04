@@ -1,7 +1,5 @@
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production'
-    ? '/Blog/'
-    : '/',
+  baseUrl: '/',
   configureWebpack: {
     resolve: {
       alias: {
@@ -9,5 +7,11 @@ module.exports = {
         pages: '@/pages',
       },
     },
+  },
+
+  pwa: {
+    name: 'Yanxin\'s Blog',
+    themeColor: '#FFFFFF',
+    msTileColor: '#51D2FF',
   },
 };
