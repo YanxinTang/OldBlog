@@ -31,6 +31,10 @@ export default {
 <style scoped>
     .el-header{
         background: #FFF;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 1px 6px 1px #efefef;
     }
     @media (min-width: 1000px){
         .el-header{
