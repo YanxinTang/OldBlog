@@ -6,7 +6,7 @@
                 class="pull-right"
                 mode="horizontal"
                 :router="true"
-                default-active="/">
+                :default-active="$route.path">
                 <el-menu-item index="/">Blog</el-menu-item>
                 <el-menu-item index="/categories">分类</el-menu-item>
             </el-menu>
