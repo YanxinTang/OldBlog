@@ -52,6 +52,7 @@ export default {
   computed: {
     categories() {
       const categories = this.categoriesData;
+      // eslint-disable-next-line
       categories.forEach(r => r.name = r.attributes.name);
       return categories;
     },
@@ -81,16 +82,20 @@ export default {
       Object.keys(form).forEach((key) => {
         switch (typeof form[key]) {
           case 'number':
+            // eslint-disable-next-line
             form[key] = 0;
             break;
           case 'object':
             if (Array.isArray(form[key])) {
+              // eslint-disable-next-line
               form[key] = [];
             } else {
+              // eslint-disable-next-line
               form[key] = {};
             }
             break;
           default:
+            // eslint-disable-next-line
             form[key] = '';
         }
       });

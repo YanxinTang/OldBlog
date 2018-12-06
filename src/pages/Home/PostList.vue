@@ -1,6 +1,11 @@
 <template>
     <div class="post-list">
-        <PostListItem v-for="post in posts" :key="post.id" :post="post" v-if="post.attributes.category"></PostListItem>
+        <PostListItem
+          v-for="post in posts"
+          :key="post.id"
+          :post="post"
+          v-if="post.attributes.category">
+        </PostListItem>
         <div class="text-center">
             <i class="el-icon-loading" :style="{visibility: loading ? 'visible' : 'hidden'}"></i>
             <span v-if="over" class="over-tips">—— 完 ——</span>

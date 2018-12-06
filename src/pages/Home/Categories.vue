@@ -1,15 +1,15 @@
 <template>
   <div>
     <el-row>
-      <el-col 
-        :span="24" 
+      <el-col
+        :span="24"
         :md="{span: 12, offset: 3}"
         v-loading="loading"
         element-loading-background="rgb(255, 255, 255, 0)">
         <ul class="category-wrapper">
-          <li 
+          <li
             class="category"
-            v-for="category in categories" 
+            v-for="category in categories"
             :key="category.id" >
             <h2>
               {{ category.attributes.name }}
@@ -27,18 +27,18 @@ export default {
   data() {
     return {
       loading: true,
-      categories: []
-    }
+      categories: [],
+    };
   },
   mounted() {
     const categoriesQuery = new this.$AV.Query('Categories');
 
-    categoriesQuery.find().then(categories => {
+    categoriesQuery.find().then((categories) => {
       this.categories = categories;
       this.loading = false;
-    }, error => {
+    }, (error) => {
       // TODO: 处理错误
-      console.log(error)
+      console.log(error);
     });
   },
 };

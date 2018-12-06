@@ -79,6 +79,7 @@ export default {
       const Categories = this.$AV.Object.extend('Categories');
       const category = new Categories();
       category.set('name', this.form.name);
+      // eslint-disable-next-line
       category.save().then((category) => {
         this.categories.push(category);
         this.$notify({
@@ -110,6 +111,7 @@ export default {
           type: 'success',
         });
       }, (error) => {
+        console.log(error);
         this.$notify({
           title: '失败',
           message: '删除失败',

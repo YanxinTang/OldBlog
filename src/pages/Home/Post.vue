@@ -68,6 +68,7 @@ export default {
         this.post = post;
       }, (error) => {
         // 异常处理
+        console.log(error);
       });
     },
   },

@@ -9,6 +9,7 @@ export default {
       appId: APP_ID,
       appKey: APP_KEY,
     });
+    // eslint-disable-next-line
     Vue.prototype.$AV = AV;
   },
 };
