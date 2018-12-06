@@ -61,10 +61,16 @@ export default {
     submit() {
       const Posts = this.$AV.Object.extend('Posts');
       const post = new Posts();
+      const category = this.getCategoryObject(this.form.category.pop());
       post.set('title', this.form.title);
-      post.set('category', this.getCategoryObject(this.form.category.pop()));
+      post.set('category', category);
       post.set('content', this.form.content);
       post.save().then(() => {
+
+        const relation = category.relation('posts');
+        relation.add(post);
+        category.save();
+        
         this.cleanForm(this.form);
         this.$notify({
           title: '成功',

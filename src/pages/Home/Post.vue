@@ -64,7 +64,6 @@ export default {
       const query = new this.$AV.Query('Posts');
       query.include('category');
       query.get(id).then((post) => {
-        console.log(post);
         this.post = post;
       }, (error) => {
         // 异常处理

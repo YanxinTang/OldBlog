@@ -36,6 +36,9 @@ export default {
     loading() {
       return !this.canLoad && !this.over; // 正在加载时canLoad为false; 所有文章未加载完成，over为false;
     },
+    categoryId() {
+      return this.$route.params.categoryId;
+    }
   },
   methods: {
     loadMore() {
@@ -46,8 +49,17 @@ export default {
       }
     },
     load() {
+      let query = null;
+      console.log(this.categoryId);
+      if(this.categoryId){
+        const category = this.$AV.Object.createWithoutData('Categories', this.categoryId);
+        const relation = category.relation('posts');
+        query = relation.query();
+      } else {
+        query = new this.$AV.Query('Posts');
+      }
+
       const date = this.posts.length ? this.posts[this.posts.length - 1].createdAt : new Date();
-      const query = new this.$AV.Query('Posts');
       query.include('category');
       query.limit(5);
       query.addDescending('createdAt');
@@ -64,6 +76,9 @@ export default {
       });
     },
   },
+  beforeRouteUpdate (to, from, next) {
+    console.log('asdfasdfasdfasdfasdf')
+  }
 };
 </script>
 

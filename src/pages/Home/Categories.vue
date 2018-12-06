@@ -1,23 +1,15 @@
 <template>
   <div>
-    <el-row>
-      <el-col
-        :span="24"
-        :md="{span: 12, offset: 3}"
-        v-loading="loading"
-        element-loading-background="rgb(255, 255, 255, 0)">
-        <ul class="category-wrapper">
-          <li
-            class="category"
-            v-for="category in categories"
-            :key="category.id" >
-            <h2>
-              {{ category.attributes.name }}
-            </h2>
-          </li>
-        </ul>
-      </el-col>
-    </el-row>
+    <el-card 
+      shadow="never"
+      v-for="category in categories"
+      :key="category.id">
+      <h3>
+        <router-link :to="{name: 'category', params: {categoryId: category.id}}">
+          #{{ category.attributes.name }}
+        </router-link>
+      </h3>
+    </el-card>
   </div>
 </template>
 

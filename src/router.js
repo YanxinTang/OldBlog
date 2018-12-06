@@ -9,14 +9,18 @@ const routes = {
       children: [
         {
           path: '',
-          component: () => import('./pages/Home/Blog.vue'),
-          children: [
-            { path: '', component: () => import('./pages/Home/PostList.vue'), name: 'index' },
-            { path: '/post/:id', component: () => import('./pages/Home/Post.vue'), props: true },
-          ],
+          name: 'index',
+          components: {
+            default: () => import('./pages/Home/PostList'),
+          },
         },
-        { path: '/categories', component: () => import('./pages/Home/Categories.vue') },
-
+        { path: 'post/:id', component: () => import('./pages/Home/Post.vue'), props: true },
+        { path: 'categories', component: () => import('./pages/Home/Categories.vue') },
+        {
+          path: 'categories/:categoryId',
+          name: 'category',
+          component: () => import('./pages/Home/PostList'),
+        },
       ],
     },
     { path: '/login', component: () => import('./pages/Login.vue') },

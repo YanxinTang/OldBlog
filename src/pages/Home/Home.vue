@@ -12,9 +12,25 @@
             </el-menu>
         </el-header>
         <el-main>
-            <keep-alive>
-                <router-view></router-view>
-            </keep-alive>
+            <el-row>
+                <el-col :md="{span: 12, offset:3 }" :span="24" class="left-panel">
+                    <router-view :key="$route.fullPath"></router-view>
+                </el-col>
+                <el-col :span="5" :offset="1" class="hidden-sm-and-down">
+                    <el-card shadow="never">
+                        <el-row class="profile-links">
+                            <el-col :span="12">
+                                <router-view name="sidebar"></router-view>
+                                <a href="https://github.com/YanxinTang" target="_blank">
+                                    <i class="iconfont icon-github"></i>
+                                </a>
+                            </el-col>
+                        </el-row>
+                        <div class="divider"></div>
+                        <h5 class="text-center copyright">Leancloud & Vue</h5>
+                    </el-card>
+                </el-col>
+            </el-row>
         </el-main>
     </el-container>
 </template>
@@ -25,6 +41,9 @@ import Logo from './Logo.vue';
 export default {
   name: 'ListPost',
   components: { Logo },
+  beforeRouteUpdate(to, from, next) {
+    next();
+  },
 };
 </script>
 
@@ -41,5 +60,17 @@ export default {
             padding-left: 100px;
             padding-right: 100px;
         }
+    }
+    .left-panel{
+        min-height: 36px;
+    }
+    .copyright{
+        color: #C0C4CC;
+    }
+    .profile-links i{
+        font-size: 24px;
+    }
+    .profile-links a:hover{
+        color: #2d374b;
     }
 </style>
