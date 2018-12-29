@@ -21,6 +21,8 @@
 import dayjs from 'dayjs';
 import Marked from 'marked';
 import PostHeader from './PostHeader.vue';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism.css'
 
 export default {
   name: 'Post',
@@ -48,6 +50,11 @@ export default {
   },
   computed: {
     content() {
+      Marked.setOptions({
+        highlight(code, lang) {
+          return Prism.highlight(code, Prism.languages[lang], lang);
+        }
+      });
       return Marked(this.post.attributes.content);
     },
   },
