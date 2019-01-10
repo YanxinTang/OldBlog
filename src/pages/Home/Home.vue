@@ -7,8 +7,9 @@
                 mode="horizontal"
                 :router="true"
                 :default-active="$route.path">
-                <el-menu-item index="/">Blog</el-menu-item>
-                <el-menu-item index="/categories">分类</el-menu-item>
+                <el-menu-item index="/"><i class="el-icon-document"></i>Blog</el-menu-item>
+                <el-menu-item index="/categories"><i class="el-icon-menu"></i>分类</el-menu-item>
+                <el-menu-item index="/archives"><i class="el-icon-date"></i>归档</el-menu-item>
             </el-menu>
         </el-header>
         <el-main>

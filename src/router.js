@@ -16,6 +16,7 @@ const routes = {
         },
         { path: 'post/:id', component: () => import('./pages/Home/Post.vue'), props: true },
         { path: 'categories', component: () => import('./pages/Home/Categories.vue') },
+        { path: 'archives', component: () => import('./pages/Home/Archives.vue') },
         {
           path: 'categories/:categoryId',
           name: 'category',
